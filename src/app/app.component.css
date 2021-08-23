@@ -1,0 +1,10 @@
+.header-footer {
+  background-color: #ef952b;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-footer > * {
+  margin: 0 1em;
+}
