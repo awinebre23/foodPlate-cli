@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../models/User';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'fp-home-btn',
@@ -7,12 +9,12 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class HomeBtnComponent implements OnInit {
 
-  @Input()
-  user;
+  currentUser: User;
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
   }
 
 }

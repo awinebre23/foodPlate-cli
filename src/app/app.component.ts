@@ -11,13 +11,17 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
   title: string = 'foodPlate-cli';
-  user: User;
+  // user: User;
+  currentUser: User;
 
   constructor(private titleService: Title, private userService: UserService) {}
 
   ngOnInit() {
     this.titleService.setTitle('Welcome to FoodPlate');
-    this.user = this.userService.getUser();
-    console.log(this.user);
+    // this.user = this.userService.getUser();
+    this.userService.getUser();
+    this.userService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    })
   }
 }
