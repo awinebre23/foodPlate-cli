@@ -14,16 +14,6 @@ export class MainComponent implements OnInit {
   routerLink: string;
   router: Router;
 
-  getRoute() {
-    if (!this.currentUser.registered) {
-    this.routerLink = 'register';
-    }
-    else if (this.currentUser.registered) {
-    this.routerLink = 'myPlate';
-    }
-    return this.routerLink;
-   }
-
   constructor(private userService: UserService, private _router: Router) { 
     this.router = _router;
   }
@@ -31,5 +21,15 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentUser.subscribe(user => this.currentUser = user);
   }
+
+  getRoute() {
+    if (!this.currentUser.registered) {
+      this.routerLink = 'register';
+    }
+    else if (this.currentUser.registered) {
+      this.routerLink = 'myPlate';
+    }
+    return this.routerLink;
+   }
 
 }

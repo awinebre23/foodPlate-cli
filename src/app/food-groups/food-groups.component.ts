@@ -14,7 +14,8 @@ export class FoodGroupsComponent implements OnInit {
 
   showGroup(group) {
     console.log(group);
-    this.router.navigate([group.name], {relativeTo: this.route});
+    this.router.navigate([group.name], {relativeTo: this.route,
+    queryParams: {group: `${group.name}`}});
   }
 
   constructor(private foodGroupService: FoodGroupsService, private router: Router, private route: ActivatedRoute) { }

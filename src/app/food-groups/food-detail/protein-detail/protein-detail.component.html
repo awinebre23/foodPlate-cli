@@ -8,13 +8,13 @@
       </tr>
       <tr>
         <td>Single Serving</td>
-        <td></td>
-        <td></td>
+        <td>{{ proteinSample.calories }}</td>
+        <td>{{ proteinSample.protein }}</td>
       </tr>
       <tr>
         <td>Double Serving</td>
-        <td></td>
-        <td></td>
+        <td>{{ proteinSample.calories | double }}</td>
+        <td>{{ proteinSample.protein | double }}</td>
       </tr>
     </table>
 </section>
