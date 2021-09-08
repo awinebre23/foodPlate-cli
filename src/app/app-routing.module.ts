@@ -5,6 +5,7 @@ import { ExercisesComponent } from "./exercises/exercises.component";
 import { FarmersMarketsComponent } from "./farmers-markets/farmers-markets.component";
 import { foodGroupsRoutes } from "./food-groups/food-groups.routing";
 import { FoodComponent } from "./food/food.component";
+import { GoalsComponent } from "./goals/goals.component";
 import { PlateComponent } from "./plate/plate.component";
 import { RegisterComponent } from "./register/register.component";
 import { RegisterGuardService } from "./services/register-guard.service";
@@ -26,13 +27,19 @@ const routes: Routes = [
     {
         path: '',
         children: [
-            {path: 'myPlate', component: PlateComponent, canActivate: [RegisterGuardService]},
-            {path: '', component: DefaultComponent},
-            {path: 'register', component: RegisterComponent},
-            {path: 'farmers-market', component: FarmersMarketsComponent},
-            {path: 'exercises', component: ExercisesComponent},
+            { path: 'myPlate', component: PlateComponent, canActivate: [RegisterGuardService] },
+            { path: '', component: DefaultComponent },
+            { path: 'register', component: RegisterComponent },
+            { path: 'farmers-market', component: FarmersMarketsComponent },
+            { path: 'exercises', component: ExercisesComponent },
             { path: 'nutritionInfo', component: FoodComponent },
             ...foodGroupsRoutes,
+            { path: 'goals', component: GoalsComponent },
+            {
+                path: 'foodGroups',
+                loadChildren: () => import('./food-groups/food-groups.module')
+                    .then(mod => mod.FoodGroupsModule)
+            },
             fallbackRoute,
         ]
     }
@@ -45,4 +52,4 @@ const routes: Routes = [
     providers: [AllowFullAccessGuard, RegisterGuardService]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule { }

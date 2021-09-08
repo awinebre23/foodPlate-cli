@@ -10,7 +10,6 @@ import { MainComponent } from './main/main.component';
 import { HomeBtnComponent } from './home-btn/home-btn.component';
 import { PlateComponent } from './plate/plate.component';
 import { MessageComponent } from './message/message.component';
-import { FoodGroupsModule } from './food-groups/food-groups.module';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { DefaultComponent } from './components/default/default.component';
@@ -20,6 +19,7 @@ import { FarmersMarketsComponent } from './farmers-markets/farmers-markets.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodaysGoalComponent } from './todays-goal/todays-goal.component';
 import { FoodComponent } from './food/food.component';
+import { GoalsComponent } from './goals/goals.component';
 
 @NgModule({
   declarations: [ 
@@ -36,13 +36,12 @@ import { FoodComponent } from './food/food.component';
     ExercisesComponent, 
     FarmersMarketsComponent, 
     TodaysGoalComponent, 
-    FoodComponent 
+    FoodComponent, GoalsComponent 
   ],
   imports: [
     AppRoutingModule,
     CommonModule,
     BrowserModule,
-    FoodGroupsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule

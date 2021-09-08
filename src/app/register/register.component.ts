@@ -32,18 +32,21 @@ export class RegisterComponent implements OnInit {
       'email': [null, Validators.compose([Validators.required, Validators.email])],
       'gender': [null, [Validators.required]],
       'ageGroup': [null, [Validators.required]]
-    }, {updateOn: 'blur'});
-   }
+    });
+  }
+
+  ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => this.currentUser = user);
+    this.regForm.valueChanges.subscribe(value => console.log(value));
+  }
 
   onSubmit(formValues: any) {
     this.userService.updateUser(formValues);
     UserService.storeUserLocal(formValues);
   }
 
-
-  ngOnInit(): void {
-    this.userService.currentUser.subscribe(user => this.currentUser = user);
-    this.regForm.valueChanges.subscribe(value => console.log(value));
+  canDeactivate(): boolean {
+    return !this.regForm.touched;
   }
 
 }
